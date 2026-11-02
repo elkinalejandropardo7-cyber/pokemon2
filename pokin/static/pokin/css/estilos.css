@@ -1,0 +1,439 @@
+
+/* =====================================
+   ESTILOS GENERALES
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(ellipse at top left, #35002f 0%, transparent 40%),
+        radial-gradient(ellipse at bottom right, #170044 0%, transparent 40%),
+        #050505;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* =====================================
+   ENCABEZADO
+===================================== */
+
+.encabezado {
+    background: linear-gradient(110deg, #10000f, #13051f, #10002b);
+    color: white;
+    padding: 25px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 5px solid #d624b8;
+    box-shadow: 0 4px 25px rgba(236, 72, 153, 0.35);
+    position: relative;
+    z-index: 10;
+}
+
+.logo h1 {
+    background: linear-gradient(90deg, #ff1493, #b026ff, #536dfe);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-shadow: none;
+}
+
+.logo p {
+    color: #f5d9ff;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* =====================================
+   MENÚ DE NAVEGACIÓN
+===================================== */
+
+.menu {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 1px solid #462052;
+    background: rgba(15, 5, 22, 0.85);
+    transition: 0.3s ease;
+}
+
+.menu a:hover {
+    background: linear-gradient(135deg, #ec168f, #772cff);
+    color: white;
+    border-color: #f725d4;
+    box-shadow: 0 0 18px rgba(236, 72, 153, 0.6);
+    transform: translateY(-3px);
+}
+
+/* =====================================
+   CONTENEDOR PRINCIPAL
+===================================== */
+
+.contenedor {
+    width: 90%;
+    max-width: 1250px;
+    margin: 40px auto;
+}
+
+/* =====================================
+   SECCIÓN INICIO
+===================================== */
+
+.seccion-inicio {
+    background:
+        linear-gradient(110deg, rgba(27, 4, 29, 0.96), rgba(8, 5, 25, 0.96), rgba(18, 5, 65, 0.96));
+    padding: 50px 30px;
+    text-align: center;
+    border-radius: 22px;
+    margin-bottom: 40px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow:
+        0 0 12px rgba(236, 72, 153, 0.25),
+        0 0 30px rgba(109, 40, 217, 0.2);
+    position: relative;
+    isolation: isolate;
+}
+
+.seccion-inicio::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 22px;
+    background: linear-gradient(110deg, #ff27b7, #8b2cff, #315cff);
+    z-index: -1;
+}
+
+.seccion-inicio h2 {
+    color: #ffffff;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.seccion-inicio h2 span {
+    background: linear-gradient(90deg, #ff2ca8, #a855f7, #6485ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.seccion-inicio p {
+    color: #f0e8fa;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* =====================================
+   SECCIONES Y TARJETAS
+===================================== */
+
+.seccion {
+    background: linear-gradient(135deg, #100d13, #08080c, #100719);
+    padding: 35px;
+    margin-bottom: 40px;
+    border-radius: 22px;
+    border: 2px solid #9b1ab0;
+    box-shadow:
+        0 0 12px rgba(236, 72, 153, 0.15),
+        0 0 25px rgba(124, 58, 237, 0.12);
+    transition: box-shadow 0.3s ease;
+}
+
+.seccion:hover {
+    box-shadow:
+        0 0 18px rgba(236, 72, 153, 0.25),
+        0 0 30px rgba(124, 58, 237, 0.2);
+}
+
+.titulo-seccion {
+    text-align: center;
+    color: #ffffff;
+    font-size: 28px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #d624b8;
+    text-shadow: 0 0 12px rgba(192, 38, 211, 0.4);
+}
+
+/* =====================================
+   FORMULARIOS
+===================================== */
+
+.formulario {
+    max-width: 850px;
+    margin: auto;
+}
+
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 22px;
+}
+
+.grupo-campo label {
+    color: #f5b7ff;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.grupo-campo input,
+.grupo-campo select,
+.grupo-campo textarea {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #76228e;
+    border-radius: 12px;
+    background: #15111b;
+    font-size: 15px;
+    color: white;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.grupo-campo input:focus,
+.grupo-campo select:focus,
+.grupo-campo textarea:focus {
+    border-color: #e92ab5;
+    background: #1b1022;
+    box-shadow: 0 0 14px rgba(236, 72, 153, 0.3);
+}
+
+.grupo-campo input::placeholder,
+.grupo-campo textarea::placeholder {
+    color: #b8a9c4;
+}
+
+.grupo-campo select option {
+    background: #15111b;
+    color: white;
+}
+
+.grupo-campo textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* =====================================
+   BOTÓN GUARDAR
+===================================== */
+
+.boton-guardar {
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
+    background: linear-gradient(100deg, #6725ff, #c817d2, #f01891);
+    color: white;
+    border: none;
+    border-radius: 35px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 0 18px rgba(202, 24, 210, 0.3);
+}
+
+.boton-guardar:hover {
+    background: linear-gradient(100deg, #842dff, #ed25b6, #ff3d9a);
+    box-shadow:
+        0 0 15px rgba(236, 72, 153, 0.5),
+        0 0 30px rgba(139, 92, 246, 0.3);
+    transform: translateY(-3px);
+}
+
+.boton-guardar:active {
+    transform: scale(0.98);
+}
+
+/* =====================================
+   TABLAS
+===================================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    background: #100d16;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background: linear-gradient(100deg, #6525b9, #a31ca5);
+    color: white;
+    padding: 14px;
+    text-align: center;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #392342;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background: #19121f;
+}
+
+tbody tr:hover {
+    background: #281332;
+}
+
+/* =====================================
+   BOTONES DE ACCIONES
+===================================== */
+
+button,
+input[type="submit"] {
+    transition: 0.3s ease;
+}
+
+button:not(.boton-guardar) {
+    border-radius: 8px;
+}
+
+/* =====================================
+   ENLACES
+===================================== */
+
+a {
+    transition: 0.3s ease;
+}
+
+/* =====================================
+   PIE DE PÁGINA
+===================================== */
+
+.pie-pagina {
+    background: linear-gradient(100deg, #10000f, #0a0714, #10002b);
+    color: white;
+    text-align: center;
+    padding: 25px;
+    border-top: 5px solid transparent;
+    border-image: linear-gradient(90deg, #ff1493, #a020f0, #315cff) 1;
+    margin-top: 40px;
+    box-shadow: 0 -5px 25px rgba(139, 92, 246, 0.15);
+}
+
+.pie-pagina p {
+    font-size: 14px;
+    margin: 7px;
+    color: #e8dff5;
+}
+
+/* =====================================
+   SELECCIÓN DE TEXTO
+===================================== */
+
+::selection {
+    background: #d624b8;
+    color: white;
+}
+
+/* =====================================
+   BARRA DE DESPLAZAMIENTO
+===================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #08060c;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#ec4899, #7c3aed);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ec4899;
+}
+
+/* =====================================
+   DISEÑO PARA CELULARES
+===================================== */
+
+@media (max-width: 768px) {
+
+    .encabezado {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 15px;
+        gap: 20px;
+    }
+
+    .logo h1 {
+        font-size: 32px;
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .menu a {
+        font-size: 13px;
+        padding: 10px 13px;
+    }
+
+    .contenedor {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    .seccion {
+        padding: 22px 15px;
+        margin-bottom: 25px;
+    }
+
+    .seccion-inicio {
+        padding: 40px 15px;
+    }
+
+    .seccion-inicio h2 {
+        font-size: 26px;
+    }
+
+    .seccion-inicio p {
+        font-size: 15px;
+    }
+
+    .titulo-seccion {
+        font-size: 23px;
+    }
+
+    .formulario {
+        width: 100%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

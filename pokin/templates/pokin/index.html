@@ -1,0 +1,176 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon - Sistema de Registro</title>
+
+    <link rel="stylesheet" href="{% static 'pokin/css/estilos.css' %}">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+        <div class="logo">
+            <h1>POKÉMON</h1>
+            <p>Centro de entrenamiento Pokémon</p>
+        </div>
+
+        <div class="acciones-principales">
+            <a href="{% url 'poken' %}" class="boton-crear">
+                + Registrar Pokémon
+            </a>
+        </div>
+
+        <nav class="menu">
+            <a href="#inicio">Inicio</a>
+            <a href="#pokemones">Pokémon</a>
+            <a href="#entrenadores">Entrenadores</a>
+            <a href="#gimnasios">Gimnasios</a>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenedor">
+
+        <!-- INICIO -->
+        <section id="inicio" class="seccion-inicio">
+            <h2>Bienvenido al mundo Pokémon</h2>
+            <p>
+                Administra tus Pokémon, registra entrenadores
+                y conoce los gimnasios disponibles.
+            </p>
+        {% block content %}
+        {% endblock %}
+        </section>
+
+        <!-- POKÉMON REGISTRADOS -->
+        <section id="pokemones" class="seccion">
+            <h2 class="titulo-seccion">Pokémon registrados</h2>
+
+            {% for pokemon in pokemones %}
+                <div class="grupo-campo">
+                    <h3>{{ pokemon.nombre }}</h3>
+
+                    <p>Peso: {{ pokemon.peso }}</p>
+                    <p>Habilidades: {{ pokemon.habilidades }}</p>
+                    <p>Naturaleza: {{ pokemon.get_naturaleza_display }}</p>
+                    <p>Descripción: {{ pokemon.descripcion }}</p>
+                    <p>Entrenador: {{ pokemon.entrenador }}</p>
+
+                    {% if pokemon.imagen %}
+                        <img src="{{ pokemon.imagen }}" alt="{{ pokemon.nombre }}" width="150">
+                    {% endif %}
+
+                    <a href="{% url 'editar_pokemon' pokemon.nombre %}">
+                        Editar
+                    </a>
+
+                    <form action="{% url 'eliminar' pokemon.nombre %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </div>
+            {% empty %}
+                <p>No hay Pokémon registrados todavía.</p>
+            {% endfor %}
+        </section>
+
+        <!-- ENTRENADORES -->
+        <section id="entrenadores" class="seccion">
+            <h2 class="titulo-seccion">Registrar Entrenador</h2>
+
+            <form class="formulario" method="POST">
+                {% csrf_token %}
+
+                <div class="grupo-campo">
+                    <label for="id_documento">Documento:</label>
+                    <input type="text" id="id_documento"
+                        name="id_documento" placeholder="Número de documento">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="nombre_entrenador">Nombre:</label>
+                    <input type="text" id="nombre_entrenador"
+                        name="nombre" placeholder="Nombre">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido"
+                        name="apellido" placeholder="Apellido">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="pokemones_entrenador">Pokémon:</label>
+                    <input type="text" id="pokemones_entrenador"
+                        name="pokemones" placeholder="Pokémon">
+                </div>
+
+                <button type="submit" class="boton-guardar">
+                    Registrar Entrenador
+                </button>
+            </form>
+        </section>
+
+        <!-- GIMNASIOS -->
+        <section id="gimnasios" class="seccion">
+            <h2 class="titulo-seccion">Registrar Gimnasio</h2>
+
+            <form class="formulario" method="POST">
+                {% csrf_token %}
+
+                <div class="grupo-campo">
+                    <label for="lider_del_gym">Líder del gimnasio:</label>
+                    <input type="text" id="lider_del_gym"
+                        name="lider_del_gym" placeholder="Nombre del líder">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="elemnto_del_gym">Tipo de elemento:</label>
+                    <select id="elemnto_del_gym" name="elemnto_del_gym">
+                        <option value="">Selecciona un tipo</option>
+                        <option value="PL">Planta</option>
+                        <option value="FU">Fuego</option>
+                        <option value="AavG">Agua</option>
+                        <option value="EL">Eléctrico</option>
+                        <option value="NO">Normal</option>
+                        <option value="PS">Psíquico</option>
+                        <option value="LU">Lucha</option>
+                        <option value="VE">Veneno</option>
+                        <option value="TI">Tierra</option>
+                        <option value="VO">Volador</option>
+                        <option value="RO">Roca</option>
+                        <option value="BU">Bicho</option>
+                        <option value="FA">Fantasma</option>
+                        <option value="DR">Dragón</option>
+                    </select>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="medallas">Medallas:</label>
+                    <input type="text" id="medallas"
+                        name="medallas" placeholder="Nombre de las medallas">
+                </div>
+
+                <button type="submit" class="boton-guardar">
+                    Registrar Gimnasio
+                </button>
+            </form>
+        </section>
+        
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="pie-pagina">
+        <p>Proyecto Pokémon - Sistema de gestión Django</p>
+        <p>Todos los derechos reservados © 2026</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'pokin/index.html' %}
+
+{% block content %}
+
+<section class="seccion">
+    <h2>Registrar Pokémon</h2>
+
+    <form method="POST" action="{% url 'poken' %}" class="formulario-pokemon">
+        {% csrf_token %}
+
+        {{ forms.as_p }}
+
+        <button type="submit">Guardar Pokémon</button>
+    </form>
+</section>
+
+{% endblock %}
